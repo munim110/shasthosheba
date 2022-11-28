@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^api/', include('doctor.urls')),
     re_path('auth/', UserObtainAuthToken.as_view()),
-
+    re_path(r'^api/', include('patient.urls')),
+    re_path(r'^api/', include('prescription.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

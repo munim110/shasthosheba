@@ -1,4 +1,7 @@
 from django.shortcuts import render
+
+# Create your views here.
+from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework import viewsets
@@ -8,9 +11,9 @@ from .models import *
 from .serializers import *
 
 # Create your views here.
-class DoctorViewSet(viewsets.ModelViewSet):
-    queryset = Doctor.objects.all()
-    serializer_class = DoctorSerializer
+class IntermediaryViewSet(viewsets.ModelViewSet):
+    queryset = Intermediary.objects.all()
+    serializer_class = IntermediarySerializer
 
 
 class UserObtainAuthToken(ObtainAuthToken):
@@ -26,4 +29,9 @@ class UserObtainAuthToken(ObtainAuthToken):
         user = User.objects.get(id=token.user_id)
         userSerializer = UserSerializer(user)
         return Response({'token': token.key, 'user': userSerializer.data})
+
+
+class PatientViewSet(viewsets.ModelViewSet):
+    queryset = Patient.objects.all()
+    serializer_class = PatientSerializer
 
